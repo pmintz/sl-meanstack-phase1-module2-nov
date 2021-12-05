@@ -25,6 +25,23 @@ var question = function /*readFromConsole*/() {
     })
 }
 
+var question2 = function /*readFromConsole*/() {
+    return new Promise((res, rej) => {
+        rl.question("Type in the amount of the expense (type end to stop)"
+            , (name) => {
+                addNameAndExpense(name);
+                res(name);
+                /*rl.question("Type in the amount of expense"
+                    , (expense) => {
+                        //console.log(`His name is ${name}`);
+                        //addNameAndExpense(name);
+                        addNameAndExpense(expense);
+                        res(expense);
+                    });*/
+            });
+    })
+}
+
 function addNameAndExpense(...nameOrExpense){
     //name+=nameOrExpense;
     //name.concat(nameOrExpense);
@@ -32,10 +49,11 @@ function addNameAndExpense(...nameOrExpense){
 }
 
 function display() {
-    console.log("printing values")
-    for(let i = 0; i<name.length; i++){
+    console.log()
+    for(let i = 0; i<name.length-2; i++){
         console.log(name[i] + " : " + name[++i]);
     }
+    console.log();
 }
 
 /*function timer(){
@@ -63,10 +81,18 @@ function returnTimer(){
 (async function main() {
     var answer;
     while ( answer != "end" ) {
+
         answer = await question();
-        console.log(answer);
+        //console.log(answer);
+        if(answer === "end"){
+            break;
+        }
+
+        answer = await question2();
     }
-    console.log( "finally you are sure!");
+    //console.log( "finally you are sure!");
+    display();
+    process.exit();
 })();
 
 
