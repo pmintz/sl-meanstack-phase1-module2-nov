@@ -14,13 +14,13 @@ var question = function /*readFromConsole*/() {
             , (name) => {
                 addNameAndExpense(name);
                 res(name);
-                rl.question("Type in the amount of expense"
+                /*rl.question("Type in the amount of expense"
                     , (expense) => {
                         //console.log(`His name is ${name}`);
                         //addNameAndExpense(name);
                         addNameAndExpense(expense);
                         res(expense);
-                    });
+                    });*/
             });
     })
 }
@@ -64,6 +64,7 @@ function returnTimer(){
     var answer;
     while ( answer != "end" ) {
         answer = await question();
+        console.log(answer);
     }
     console.log( "finally you are sure!");
 })();
